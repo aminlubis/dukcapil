@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class T_bencana_model extends CI_Model {
+class T_input_data_model extends CI_Model {
 
-	var $table = 'v_bencana';
-	var $column = array('v_bencana.nama_bencana');
-	var $select = 'v_bencana.*';
+	var $table = 't_registrasi';
+	var $column = array('t_registrasi.no_reg');
+	var $select = 't_registrasi.*';
 
-	var $order = array('v_bencana.id_bencana' => 'DESC');
+	var $order = array('t_registrasi.id' => 'DESC');
 
 	public function __construct()
 	{
@@ -117,11 +117,11 @@ class T_bencana_model extends CI_Model {
 	{
 		$this->_main_query();
 		if(is_array($id)){
-			$this->db->where_in(''.$this->table.'.id_bencana',$id);
+			$this->db->where_in(''.$this->table.'.id',$id);
 			$query = $this->db->get();
 			return $query->result();
 		}else{
-			$this->db->where(''.$this->table.'.id_bencana',$id);
+			$this->db->where(''.$this->table.'.id',$id);
 			$query = $this->db->get();
 			return $query->row();
 		}
@@ -144,7 +144,7 @@ class T_bencana_model extends CI_Model {
 	{
 		$get_data = $this->get_by_id($id);
 		if( $this->delete_image_default($get_data[0]) ){
-			$this->db->where_in(''.'t_bencana'.'.id_bencana', $id);
+			$this->db->where_in(''.'t_bencana'.'.id', $id);
 			return $this->db->delete('t_bencana');
 		}else{
 			return false;

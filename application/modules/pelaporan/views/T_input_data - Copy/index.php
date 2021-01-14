@@ -18,7 +18,7 @@ jQuery(function($) {
     function set_data_final(id_bencana){
       if(confirm('Are you sure?')){
         $.ajax({
-          url : 'kebencanaan/T_bencana/set_data_final',
+          url : 'pelaporan/T_input_data/set_data_final',
           type: "POST",
           data: {ID : id_bencana},
           dataType: "JSON",        
@@ -151,8 +151,8 @@ jQuery(function($) {
       </div>
 
       <div class="clearfix" style="margin-bottom:-5px">
-        <?php echo $this->authuser->show_button('kebencanaan/T_bencana','C','',1)?>
-        <?php echo $this->authuser->show_button('kebencanaan/T_bencana','D','',5)?>
+        <?php echo $this->authuser->show_button('pelaporan/T_input_data','C','',1)?>
+        <?php echo $this->authuser->show_button('pelaporan/T_input_data','D','',5)?>
         <div class="pull-right tableTools-container"></div>
       </div>
       <hr class="separator">
@@ -160,7 +160,7 @@ jQuery(function($) {
 
       <!-- div.dataTables_borderWrap -->
       <div style="margin-top:-27px">
-        <table id="dynamic-table" base-url="kebencanaan/T_bencana" url-detail="kebencanaan/T_bencana/show_detail" class="table table-striped table-bordered table-hover">
+        <table id="dynamic-table" base-url="pelaporan/T_input_data" url-detail="pelaporan/T_input_data/show_detail" class="table table-striped table-bordered table-hover">
         <thead>
           <tr>  
             <th width="30px" class="center"></th>
