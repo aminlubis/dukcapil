@@ -41,6 +41,7 @@ class T_input_data extends MX_Controller {
     {
         // reg id
         $id = ($_GET['id'])?$_GET['id']:'';
+        $type = $_GET['flag'];
 
         /*if id is not null then will show form edit*/
         if( $id != '' ){
@@ -57,6 +58,7 @@ class T_input_data extends MX_Controller {
             $data['flag'] = "create";
         }
         /*title header*/
+        $data['type'] = $type;
         $data['title'] = $this->title;
         /*show breadcrumbs*/
         $data['breadcrumbs'] = $this->breadcrumbs->show();
