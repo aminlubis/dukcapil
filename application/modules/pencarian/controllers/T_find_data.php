@@ -3,20 +3,20 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class T_input_data extends MX_Controller {
+class T_find_data extends MX_Controller {
 
     /*function constructor*/
     function __construct() {
 
         parent::__construct();
         /*breadcrumb default*/
-        $this->breadcrumbs->push('Index', 'pelaporan/T_input_data');
+        $this->breadcrumbs->push('Index', 'pencarian/T_find_data');
         /*session redirect login if not login*/
         if($this->session->userdata('logged')!=TRUE){
             echo 'Session Expired !'; exit;
         }
         /*load model*/
-        $this->load->model('pelaporan/T_input_data_model', 'T_input_data');
+        $this->load->model('pencarian/T_find_data_model', 'T_find_data');
         
         /*enable profiler*/
         $this->output->enable_profiler(false);
@@ -30,46 +30,34 @@ class T_input_data extends MX_Controller {
         // echo '<pre>'; print_r($this->session->all_userdata());die;
         $data = array(
             'title' => $this->title,
-            'flag' => 'create',
             'breadcrumbs' => $this->breadcrumbs->show()
         );
         /*load view index*/
-        $this->load->view('T_input_data/form', $data);
+        $this->load->view('T_find_data/index', $data);
     }
 
-    public function form_flag()
+    public function form($id='')
     {
-        // reg id
-        $id = ($_GET['id'])?$_GET['id']:'';
-        $type = $_GET['flag'];
-
         /*if id is not null then will show form edit*/
         if( $id != '' ){
             /*breadcrumbs for edit*/
-            $this->breadcrumbs->push('Edit '.strtolower($this->title).'', 'pelaporan/T_input_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
+            $this->breadcrumbs->push('Edit '.strtolower($this->title).'', 'pencarian/T_find_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
             /*get value by id*/
-            $data['value'] = $this->T_input_data->get_by_id($id);
+            $data['value'] = $this->T_find_data->get_by_id($id);
             /*initialize flag for form*/
             $data['flag'] = "update";
         }else{
             /*breadcrumbs for create or add row*/
-            $this->breadcrumbs->push('Add '.strtolower($this->title).'', 'pelaporan/T_input_data/'.strtolower(get_class($this)).'/form');
+            $this->breadcrumbs->push('Add '.strtolower($this->title).'', 'pencarian/T_find_data/'.strtolower(get_class($this)).'/form');
             /*initialize flag for form add*/
             $data['flag'] = "create";
         }
         /*title header*/
-        $data['type'] = $type;
         $data['title'] = $this->title;
         /*show breadcrumbs*/
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         /*load form view*/
-        if(in_array($type, array('ayah','ibu', 'saksi_1', 'saksi_2', 'pelapor'))){
-            $this->load->view('T_input_data/form_flag', $data);
-        }else if($type == 'bayi'){
-            $this->load->view('T_input_data/form_bayi', $data);
-        }else{
-            $this->load->view('T_input_data/form_adm', $data);
-        }
+        $this->load->view('T_find_data/form', $data);
     }
 
     public function form_data_awal($id='')
@@ -77,14 +65,14 @@ class T_input_data extends MX_Controller {
         /*if id is not null then will show form edit*/
         if( $id != '' ){
             /*breadcrumbs for edit*/
-            $this->breadcrumbs->push('Edit '.strtolower($this->title).'', 'pelaporan/T_input_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
+            $this->breadcrumbs->push('Edit '.strtolower($this->title).'', 'pencarian/T_find_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
             /*get value by id*/
-            $data['value'] = $this->T_input_data->get_by_id($id);
+            $data['value'] = $this->T_find_data->get_by_id($id);
             /*initialize flag for form*/
             $data['flag'] = "update";
         }else{
             /*breadcrumbs for create or add row*/
-            $this->breadcrumbs->push('Add '.strtolower($this->title).'', 'pelaporan/T_input_data/'.strtolower(get_class($this)).'/form');
+            $this->breadcrumbs->push('Add '.strtolower($this->title).'', 'pencarian/T_find_data/'.strtolower(get_class($this)).'/form');
             /*initialize flag for form add*/
             $data['flag'] = "create";
         }
@@ -93,7 +81,7 @@ class T_input_data extends MX_Controller {
         /*show breadcrumbs*/
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         /*load form view*/
-        $this->load->view('T_input_data/form_data_awal', $data);
+        $this->load->view('T_find_data/form_data_awal', $data);
     }
 
     
@@ -102,20 +90,20 @@ class T_input_data extends MX_Controller {
     public function show($id)
     {
         /*breadcrumbs for view*/
-        $this->breadcrumbs->push('View '.strtolower($this->title).'', 'pelaporan/T_input_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
+        $this->breadcrumbs->push('View '.strtolower($this->title).'', 'pencarian/T_find_data/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
         /*define data variabel*/
-        $data['value'] = $this->T_input_data->get_by_id($id);
+        $data['value'] = $this->T_find_data->get_by_id($id);
         $data['title'] = $this->title;
         $data['flag'] = "read";
         $data['breadcrumbs'] = $this->breadcrumbs->show();
         /*load form view*/
-        $this->load->view('T_input_data/form', $data);
+        $this->load->view('T_find_data/form', $data);
     }
 
     public function show_detail( $id )
     {
-        $fields = $this->T_input_data->list_fields();
-        $data = $this->T_input_data->get_by_id( $id );
+        $fields = $this->T_find_data->list_fields();
+        $data = $this->T_find_data->get_by_id( $id );
         $html = $this->master->show_detail_row_table( $fields, $data );      
 
         echo json_encode( array('html' => $html) );
@@ -124,7 +112,7 @@ class T_input_data extends MX_Controller {
     public function get_data()
     {
         /*get data from model*/
-        $list = $this->T_input_data->get_datatables();
+        $list = $this->T_find_data->get_datatables();
         $data = array();
         $no = $_POST['start'];
         foreach ($list as $row_list) {
@@ -141,7 +129,7 @@ class T_input_data extends MX_Controller {
                             <span class="ace-icon fa fa-caret-down icon-on-right"></span>
                         </button>
                         <ul class="dropdown-menu dropdown-inverse">
-                            '.$this->authuser->show_button_dropdown('pelaporan/T_input_data', array('R','U','D') ,$row_list->id_bencana).'   
+                            '.$this->authuser->show_button_dropdown('pencarian/T_find_data', array('R','U','D') ,$row_list->id_bencana).'   
                             <li><a href="'.base_url().'Templates/GenerateHtml/ExecutiveSummary/'.$row_list->id_bencana.'" target="_blank">Download Summary</a></li>
                         </ul>
                       </div></div>';
@@ -161,8 +149,8 @@ class T_input_data extends MX_Controller {
 
         $output = array(
                         "draw" => $_POST['draw'],
-                        "recordsTotal" => $this->T_input_data->count_all(),
-                        "recordsFiltered" => $this->T_input_data->count_filtered(),
+                        "recordsTotal" => $this->T_find_data->count_all(),
+                        "recordsFiltered" => $this->T_find_data->count_filtered(),
                         "data" => $data,
                 );
         //output to json format
@@ -234,7 +222,7 @@ class T_input_data extends MX_Controller {
             if(isset($_FILES['foto_default'] ['name']) AND $_FILES['foto_default'] ['name'] != ''){
                 /*hapus dulu file yang lama*/
                 if( $id != 0 ){
-                    $res_dt = $this->T_input_data->get_by_id($id);
+                    $res_dt = $this->T_find_data->get_by_id($id);
                     if($res_dt->foto_default != NULL){
                         if (file_exists(PATH_IMG_CONTENT.$res_dt->foto_default.'')) {
                             unlink(PATH_IMG_CONTENT.$res_dt->foto_default.'');
@@ -248,7 +236,7 @@ class T_input_data extends MX_Controller {
             if(isset($_FILES['lampiran_sk'] ['name']) AND $_FILES['lampiran_sk'] ['name'] != ''){
                 /*hapus dulu file yang lama*/
                 if( $id != 0 ){
-                    $res_dt = $this->T_input_data->get_by_id($id);
+                    $res_dt = $this->T_find_data->get_by_id($id);
                     if($res_dt->lampiran_sk != NULL){
                         if (file_exists(PATH_IMG_CONTENT.$res_dt->lampiran_sk.'')) {
                             unlink(PATH_IMG_CONTENT.$res_dt->lampiran_sk.'');
@@ -262,13 +250,13 @@ class T_input_data extends MX_Controller {
                 $dataexc['created_date'] = date('Y-m-d H:i:s');
                 $dataexc['created_by'] = json_encode(array('user_id' => $this->regex->_genRegex($this->session->userdata('user')->user_id,'RGXINT'), 'fullname' => $this->regex->_genRegex($this->session->userdata('user')->fullname,'RGXQSL')));
                 /*save post data*/
-                $this->T_input_data->save($dataexc);
+                $this->T_find_data->save($dataexc);
                 $newId = $this->db->insert_id();
             }else{
                 $dataexc['updated_date'] = date('Y-m-d H:i:s');
                 $dataexc['updated_by'] = json_encode(array('user_id' =>$this->regex->_genRegex($this->session->userdata('user')->user_id,'RGXINT'), 'fullname' => $this->regex->_genRegex($this->session->userdata('user')->fullname,'RGXQSL')));
                 /*update record*/
-                $this->T_input_data->update(array('id_bencana' => $id), $dataexc);
+                $this->T_find_data->update(array('id_bencana' => $id), $dataexc);
                 $newId = $id;
             }
 
@@ -293,7 +281,7 @@ class T_input_data extends MX_Controller {
         $id=$this->input->post('ID')?$this->input->post('ID',TRUE):null;
         $toArray = explode(',',$id);
         if($id!=null){
-            if($this->T_input_data->delete_by_id($toArray)){
+            if($this->T_find_data->delete_by_id($toArray)){
                 echo json_encode(array('status' => 200, 'message' => 'Proses Hapus Data Berhasil Dilakukan'));
             }else{
                 echo json_encode(array('status' => 301, 'message' => 'Maaf Proses Hapus Data Gagal Dilakukan'));
@@ -308,7 +296,7 @@ class T_input_data extends MX_Controller {
     {
         $id=$this->input->post('ID')?$this->input->post('ID',TRUE):null;
         if($id!=null){
-            if( $this->T_input_data->update(array('id_bencana' => $id), array('status_data' => 'final') ) ){
+            if( $this->T_find_data->update(array('id_bencana' => $id), array('status_data' => 'final') ) ){
                 echo json_encode(array('status' => 200, 'message' => 'Proses Data Berhasil Dilakukan'));
             }else{
                 echo json_encode(array('status' => 301, 'message' => 'Maaf Proses Data Gagal Dilakukan'));
@@ -324,9 +312,9 @@ class T_input_data extends MX_Controller {
         // load library
         $this->load->library('Firebase');
         $firebase = $this->firebase;
-        $data = $this->T_input_data->get_by_id($id);
+        $data = $this->T_find_data->get_by_id($id);
         if (is_null($data->notif_sent_at)) {
-            $this->T_input_data->update( array('id_bencana' => $id), array('notif_sent_at' => date('Y-m-d H:i:s'), 'channel' => 'private-1_'.$id.'' ) );
+            $this->T_find_data->update( array('id_bencana' => $id), array('notif_sent_at' => date('Y-m-d H:i:s'), 'channel' => 'private-1_'.$id.'' ) );
             $firebase->createDataPayload([
                 'id' => (string)$data->id_bencana,
                 'title' => (string)$data->nama_bencana,

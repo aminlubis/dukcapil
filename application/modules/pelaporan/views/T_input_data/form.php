@@ -61,6 +61,13 @@
                     <?php echo strtoupper('Data Saksi II (Dua)'); ?>
                   </a>
                 </li>
+
+                <li>
+                  <a data-toggle="tab" data-url="pelaporan/T_input_data/form_flag?flag=administrasi&id=<?php echo isset($value)?$value->reg_id:''?>" id="tabs_administrasi" href="#" onclick="getMenuTabs(this.getAttribute('data-url'), 'tabs_load_content')" >
+                    <i class="purple ace-icon fa fa-book bigger-120"></i>
+                    <?php echo strtoupper('Data Administrasi'); ?>
+                  </a>
+                </li>
                 
               </ul>
               <div class="tab-content">

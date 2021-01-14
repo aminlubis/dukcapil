@@ -17,137 +17,54 @@
     <!-- hidden form -->
     <input type="hidden" name="type" value="<?php echo $type; ?>">
 
-    <div class="form-group">
-      <label class="control-label col-md-2">ID</label>
-      <div class="col-md-1">
-          <input name="id" id="id" value="<?php echo isset($value)?$value->id:0?>" placeholder="Auto" class="form-control" type="text" readonly>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> Surat Kelahiran dari Dokter/Bidan/Penolong</span>
+      </label>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-md-2">NIK <?php echo ucwords(str_replace('_',' ', $type)); ?></label>
-      <div class="col-md-2">
-          <input name="nama_bencana" id="nama_bencana" value="<?php echo isset($value)?$value->nama_bencana:''?>" placeholder="" class="form-control" type="text" <?php echo ($flag=='read')?'readonly':''?>>
-      </div>
-
-      <label class="control-label col-md-2">Nama Lengkap</label>
-      <div class="col-md-3">
-          <input name="nama_bencana" id="nama_bencana" value="<?php echo isset($value)?$value->nama_bencana:''?>" placeholder="" class="form-control" type="text" <?php echo ($flag=='read')?'readonly':''?> >
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> Nama dan Identitas Saksi Kelahiran</span>
+      </label>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-md-2">Tanggal Lahir</label>  
-      <div class="col-md-2">
-          <div class="input-group">
-              <input name="tanggal_kejadian" id="tanggal_kejadian" value="<?php echo isset($value)?$value->tanggal_kejadian:''?>"  class="form-control date-picker" type="text">
-              <span class="input-group-addon">
-              <i class="ace-icon fa fa-calendar"></i>
-              </span>
-          </div>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> Kartu Keluarga (KK) Orang Tua</span>
+      </label>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-md-2">Jenis Pekerjaan</label>
-      <div class="col-md-3">
-      <?php echo $this->master->custom_selection(array('table'=>'global_parameter', 'where'=>array('flag'=>'jenis_bencana'), 'id'=>'value', 'name' => 'label'),isset($value)?$value->jenis_bencana:'','jenis_bencana','jenis_bencana','chosen-slect form-control','','');?>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> Kartu Tanda Penduduk (KTP) Orang Tua</span>
+      </label>
     </div>
 
-    <div class="form-group">
-      <label class="control-label col-md-2">Alamat</label>
-      <div class="col-md-4">
-          <textarea name="nama_bencana" id="nama_bencana" value="<?php echo isset($value)?$value->nama_bencana:''?>" placeholder="" style="height: 60px !important" class="form-control" type="text" <?php echo ($flag=='read')?'readonly':''?> ></textarea>
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> Kutipan Akta Nikah/Akta Perkawinan Orang Tua</span>
+      </label>
     </div>
 
-    <div class="form-group" style="margin-top: 3px">
-      <label class="col-md-2">&nbsp;</label>
-      <label class="control-label col-md-1" style="margin-left: 18px">RT</label>
-      <div class="col-md-1">
-          <input name="nama_bencana" id="nama_bencana" value="<?php echo isset($value)?$value->nama_bencana:''?>" placeholder="" class="form-control" type="text" <?php echo ($flag=='read')?'readonly':''?> >
-      </div>
-      <label class="control-label col-md-1">RW</label>
-      <div class="col-md-1">
-          <input name="nama_bencana" id="nama_bencana" value="<?php echo isset($value)?$value->nama_bencana:''?>" placeholder="" class="form-control" type="text" <?php echo ($flag=='read')?'readonly':''?> >
-      </div>
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> SPTJM Kebenaran Data Kelahiran</span>
+      </label>
     </div>
 
-    <div class="form-group">
-
-      <div id="prov" <?php echo isset($value) ?'':'style="display:none"'; ?>>
-        <label class="control-label col-md-2">Provinsi</label>
-        <div class="col-md-3">
-            <input id="inputProvinsi" style="margin-left:-9px;margin-bottom:3px;" class="form-control" name="provinsi" type="text" placeholder="Masukan keyword minimal 3 karakter" value="<?php echo isset($value)?($value->id_dc_propinsi!=null)?"$value->id_dc_propinsi : $value->provinsi":'':''?>" <?php echo ($flag=='read')?'readonly':''?>/>
-            <input type="hidden" name="provinsiHidden" value="<?php echo isset($value)?$value->id_dc_propinsi:'' ?>" id="provinsiHidden">
-        </div>
-
-
-        <label class="control-label col-md-2" style="margin-left:-13px;">Kota / Kabupaten</label>
-        <div class="col-md-3">
-            <input id="inputKota" style="margin-left:-9px" class="form-control" name="kota" type="text" placeholder="Masukan keyword minimal 3 karakter" value="<?php echo isset($value)?($value->id_dc_kota!=null)?"$value->id_dc_kota : $value->kota":'':''?>" <?php echo ($flag=='read')?'readonly':''?>/>
-            <input type="hidden" name="kotaHidden" value="<?php echo isset($value)?$value->id_dc_kota:'' ?>" id="kotaHidden">
-        </div>
-      </div>
-
+    <div class="checkbox">
+      <label>
+        <input name="form-field-checkbox" type="checkbox" class="ace">
+        <span class="lbl"> SPTJM Kebenaran Sebagai Pasangan Suami-Istri</span>
+      </label>
     </div>
-
-    <div class="form-group">
-      <label class="control-label col-md-2">Kecamatan</label>
-      <div class="col-md-3">
-          <input id="inputKecamatan" class="form-control" name="kecamatan" type="text" placeholder="Masukan keyword minimal 3 karakter" value="<?php echo isset($value)?($value->id_dc_kecamatan!=null)?"$value->id_dc_kecamatan : $value->kecamatan":'':''?>"  <?php echo ($flag=='read')?'readonly':''?>/>
-          <input type="hidden" name="kecamatanHidden" value="<?php echo isset($value)?$value->id_dc_kecamatan:''?>" id="kecamatanHidden">
-      </div>
-      
-
-      <div id="village" <?php echo isset($value) ?'':'style="display:none"'; ?>>
-        <label class="control-label col-md-2">Kelurahan</label>
-        <div class="col-md-3">
-            <input id="inputKelurahan" style="margin-left:-9px" class="form-control" name="kelurahan" type="text" placeholder="Masukan keyword minimal 3 karakter" value="<?php echo isset($value)?($value->id_dc_kelurahan!=null)?"$value->id_dc_kelurahan : $value->kelurahan":'':''?>" <?php echo ($flag=='read')?'readonly':''?>/> 
-            <input type="hidden" name="kelurahanHidden" value="<?php echo isset($value)?$value->id_dc_kelurahan:''?>" id="kelurahanHidden">
-        </div>
-      </div>
-
-    </div>
-          
-    <div class="form-group">
-      <label class="control-label col-md-2">Kewarganegaraan</label>
-      <div class="col-md-2">
-        <?php echo $this->master->custom_selection(array('table'=>'global_parameter', 'where'=>array('flag'=>'jenis_bencana'), 'id'=>'value', 'name' => 'label'),isset($value)?$value->jenis_bencana:'','jenis_bencana','jenis_bencana','chosen-slect form-control','','');?>
-      </div>
-      <label class="control-label col-md-2">Kebangsaan (WNA)</label>
-      <div class="col-md-3">
-        <input id="zipcode" class="form-control" name="zipcode" type="text" value="<?php echo isset($value)?$value->kode_pos:''?>" <?php echo ($flag=='read')?'readonly':''?>/>
-      </div>
-    </div>
-    <?php if($type == 'ibu') :?>
-    <div class="form-group">
-      <label class="control-label col-md-2">Tanggal Perkawinan</label>  
-      <div class="col-md-2">
-          <div class="input-group">
-              <input name="tanggal_kejadian" id="tanggal_kejadian" value="<?php echo isset($value)?$value->tanggal_kejadian:''?>"  class="form-control date-picker" type="text">
-              <span class="input-group-addon">
-              <i class="ace-icon fa fa-calendar"></i>
-              </span>
-          </div>
-      </div>
-    </div>
-    <?php endif; ?>
-
-    <?php if($type == 'pelapor') :?>
-    <div class="form-group">
-      <label class="control-label col-md-2">Tanggal Lapor</label>  
-      <div class="col-md-2">
-          <div class="input-group">
-              <input name="tanggal_kejadian" id="tanggal_kejadian" value="<?php echo isset($value)?$value->tanggal_kejadian:''?>"  class="form-control date-picker" type="text">
-              <span class="input-group-addon">
-              <i class="ace-icon fa fa-calendar"></i>
-              </span>
-          </div>
-      </div>
-    </div>
-    <?php endif; ?>
 
     <div class="row">
       <div class="form-actions center">
