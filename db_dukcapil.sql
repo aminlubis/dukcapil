@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2021-01-14 23:23:19
+Date: 2021-01-15 09:32:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -7931,7 +7931,7 @@ INSERT INTO `tmp_mst_menu` VALUES ('56', '1', 'Group Modul', 'tmp_mst_group_modu
 INSERT INTO `tmp_mst_menu` VALUES ('59', '1', 'Log History', 'Tmp_log_history', 'setting/tmp_log_history', '0', '0', 'fa fa-history', 'Y', '99', 'Log history pengguna', 'private', 'Y', 'N', '2018-07-17 16:30:02', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2018-07-23 06:26:22', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '81');
 INSERT INTO `tmp_mst_menu` VALUES ('161', '41', 'Sementara', 'T_bencana', 'kebencanaan/T_bencana', '0', '0', 'fa fa-list', 'Y', '1', '', 'private', 'N', 'Y', '2019-10-14 20:14:51', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2020-01-23 23:09:21', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('162', '41', 'Logistik', 'T_logistik', 'kebencanaan/T_logistik', '0', '0', 'fa fa-cirle-o', 'Y', '2', '', 'private', 'N', 'Y', '2019-10-20 03:39:06', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, '1243');
-INSERT INTO `tmp_mst_menu` VALUES ('163', '41', 'Akta Kelahiran', 'T_find_data', 'pencarian_data/T_find_data', '1', '0', 'fa fa-circle-o', 'Y', '2', '', 'private', 'Y', 'N', '2019-11-02 04:00:34', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-14 22:36:14', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
+INSERT INTO `tmp_mst_menu` VALUES ('163', '41', 'Akta Kelahiran', 'T_find_data', 'pencarian/T_find_data', '1', '0', 'fa fa-circle-o', 'Y', '2', '', 'private', 'Y', 'N', '2019-11-02 04:00:34', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-15 00:42:46', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('164', '42', 'Berita & Artikel', 'T_berita', 'publikasi/T_berita', '0', '0', 'fa fa-circle-o', 'Y', '1', '', 'private', 'N', 'Y', '2019-11-02 10:56:31', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2019-11-02 11:04:53', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('165', '42', 'Mitigasi Bencana', 'T_mitigasi', 'publikasi/T_mitigasi', '0', '0', 'fa fa-circle-o', 'Y', '2', '', 'private', 'N', 'Y', '2019-11-02 10:57:59', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
 INSERT INTO `tmp_mst_menu` VALUES ('166', '43', 'Struktur Organisasi', 'T_unit_kerja', 'personil/T_unit_kerja', '1', '0', 'fa fa-circle-o', 'Y', '1', '', 'private', 'N', 'Y', '2019-11-02 13:13:48', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
@@ -7945,7 +7945,7 @@ INSERT INTO `tmp_mst_menu` VALUES ('173', '44', 'Flag Mitigasi', 'Global_paramet
 INSERT INTO `tmp_mst_menu` VALUES ('174', '44', 'Unit Wilayah', 'Global_parameter', 'master_data/Global_parameter?flag=wilayah_unit', '1', '0', 'fa fa-circle-o', 'Y', '6', '', 'private', 'N', 'Y', '2019-11-29 15:34:42', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
 INSERT INTO `tmp_mst_menu` VALUES ('175', '44', 'Asal Relawan', 'Global_parameter', 'master_data/Global_parameter?flag=asal_relawan', '1', '0', 'fa fa-circle-o', 'Y', '8', '', 'private', 'N', 'Y', '2019-11-29 19:48:08', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
 INSERT INTO `tmp_mst_menu` VALUES ('176', '44', 'Jenis Dokumen', 'Global_parameter', 'master_data/Global_parameter?flag=jenis_dok', '1', '0', 'fa fa-circle-o', 'Y', '9', '', 'private', 'N', 'Y', '2019-11-29 19:48:43', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
-INSERT INTO `tmp_mst_menu` VALUES ('177', '44', 'Status Bencana', 'Global_parameter', 'master_data/Global_parameter?flag=status_bencana', '1', '0', 'fa fa-circle-o', 'Y', '10', '', 'private', 'Y', 'N', '2019-11-29 19:49:19', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
+INSERT INTO `tmp_mst_menu` VALUES ('177', '44', 'Provinsi', 'Global_parameter', 'master_data/Global_parameter?flag=status_bencana', '1', '0', 'fa fa-circle-o', 'Y', '10', '', 'private', 'Y', 'N', '2019-11-29 19:49:19', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-15 01:19:56', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('178', '44', 'Level Bencana', 'Global_parameter', 'master_data/Global_parameter?flag=level_bencana', '1', '0', 'fa fa-circle-o', 'Y', '3', '', 'private', 'N', 'Y', '2019-11-29 19:49:48', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
 INSERT INTO `tmp_mst_menu` VALUES ('179', '44', 'Satuan Logistik', 'Global_parameter', 'master_data/Global_parameter?flag=satuan', '1', '0', 'fa fa-circle-o', 'Y', '11', '', 'private', 'N', 'Y', '2019-11-29 19:50:19', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
 INSERT INTO `tmp_mst_menu` VALUES ('180', '41', 'Sumber_Daya', 'Global_parameter', 'master_data/Global_parameter?flag=sumberdaya', '1', '161', 'fa fa-circle-o', 'Y', '13', '', 'private', 'N', 'Y', '2020-02-19 14:40:27', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2020-02-19 14:45:03', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '1540');
@@ -7953,7 +7953,7 @@ INSERT INTO `tmp_mst_menu` VALUES ('181', '45', 'Panduan Pengguna', 'T_panduan_p
 INSERT INTO `tmp_mst_menu` VALUES ('182', '45', 'Kontak BNPB', 'T_personil_tim', 'personil/T_personil_tim?mod=bnpb', '0', '0', 'fa fa-circle-o', 'Y', '2', '', 'private', 'N', 'Y', '2020-03-24 11:44:23', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2020-03-24 11:44:49', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('183', '45', 'Kontak BPBD', 'T_personil_tim_bpbd', 'personil/T_personil_tim_bpbd', '0', '0', 'fa fa-circle-o', 'Y', '3', '', 'private', 'N', 'Y', '2020-03-24 11:46:52', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2020-03-24 12:43:31', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('184', '45', 'Kontak Darurat', 'T_kontak_darurat', 'personil/T_kontak_darurat', '0', '0', 'fa fa-circle-o', 'Y', '4', '', 'private', 'N', 'Y', '2020-03-24 11:48:09', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2020-03-24 12:45:48', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2025');
-INSERT INTO `tmp_mst_menu` VALUES ('185', '43', 'Pencatatan', 'T_pencatatan', 'pencatatan_sipil/T_pencatatan', '0', '0', 'fa fa-circle-o', 'Y', '1', '', 'private', 'Y', 'N', '2021-01-14 22:20:12', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-14 22:36:52', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
+INSERT INTO `tmp_mst_menu` VALUES ('185', '43', 'Pencatatan', 'T_pencatatan', 'pencarian/T_pencatatan', '0', '0', 'fa fa-circle-o', 'Y', '1', '', 'private', 'Y', 'N', '2021-01-14 22:20:12', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-15 01:10:49', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('186', '43', 'Pelaporan', '#', '#', '0', '0', 'fa fa-circle-o', 'Y', '2', '', 'private', 'Y', 'N', '2021-01-14 22:20:47', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-14 22:24:26', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('187', '43', 'Input Permohonan Akta Kelahiran', 'T_input_data', 'pelaporan/T_input_data', '1', '186', 'fa fa-pencil', 'Y', '0', '', 'private', 'Y', 'N', '2021-01-14 22:22:01', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', '2021-01-14 22:59:09', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null);
 INSERT INTO `tmp_mst_menu` VALUES ('188', '43', 'Daftar/Cetak Permohonan Akta Kelahiran', 'T_cetak_akta', 'pelaporan/T_cetak_akta', '1', '186', 'fa fa-file', 'Y', '1', '', 'private', 'Y', 'N', '2021-01-14 22:29:29', '{\"user_id\":\"1\",\"fullname\":\"Amin Lubis\"}', null, null, null);
@@ -8225,7 +8225,13 @@ CREATE TABLE `t_ktp` (
   `kecamatan` varchar(15) DEFAULT NULL,
   `kelurahan` varchar(15) DEFAULT NULL,
   `alamat` text,
-  `rtrw` varchar(25) DEFAULT NULL,
+  `rt` varchar(10) DEFAULT NULL,
+  `rw` varchar(10) DEFAULT NULL,
+  `jenis_kelahiran` varchar(255) DEFAULT NULL,
+  `tempat_dilahirkan` varchar(255) DEFAULT NULL,
+  `tgl_perkawinan` date DEFAULT NULL,
+  `kewarganegaraan` varchar(10) DEFAULT NULL,
+  `kebangsaan_wna` varchar(25) DEFAULT NULL,
   `is_active` enum('N','Y') DEFAULT 'Y',
   `created_date` datetime DEFAULT NULL,
   `created_by` varchar(255) DEFAULT NULL,
@@ -8259,6 +8265,27 @@ CREATE TABLE `t_registrasi` (
 
 -- ----------------------------
 -- Records of t_registrasi
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `t_registrasi_data_adm`
+-- ----------------------------
+DROP TABLE IF EXISTS `t_registrasi_data_adm`;
+CREATE TABLE `t_registrasi_data_adm` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reg_id` varchar(15) DEFAULT NULL,
+  `flag` varchar(10) DEFAULT NULL,
+  `is_active` enum('N','Y') DEFAULT 'Y',
+  `created_date` datetime DEFAULT NULL,
+  `created_by` varchar(255) DEFAULT NULL,
+  `updated_date` datetime DEFAULT NULL,
+  `updated_by` varchar(255) DEFAULT NULL,
+  `log_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=599 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of t_registrasi_data_adm
 -- ----------------------------
 
 -- ----------------------------
