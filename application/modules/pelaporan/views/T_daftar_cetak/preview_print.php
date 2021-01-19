@@ -121,6 +121,9 @@
           <u>Pejabat Pencatatan Sipil</u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>DINAS KEPENDUDUKAN</b><br>
           <i>Officer of Civil Registration</i> &nbsp;&nbsp;<b>DAN PENCATATAN SIPIL<br>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PROVINSI DKI JAKARTA</b><br>
+          <br><br><br>
+          <b><u>NINING KUSWIDIANINGSIH, SE</u><br>
+          NIP. 197102021993032003</b>
           </p>
         </td>
       </tr>
