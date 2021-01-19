@@ -3,11 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class T_input_data_model extends CI_Model {
 
-	var $table = 't_registrasi';
-	var $column = array('t_registrasi.no_reg');
-	var $select = 't_registrasi.*';
+	var $table = 't_ktp';
+	var $column = array('t_ktp.nama_lengkap');
+	var $select = 't_ktp.*';
 
-	var $order = array('t_registrasi.id' => 'DESC');
+	var $order = array('t_ktp.id' => 'DESC');
 
 	public function __construct()
 	{
@@ -18,46 +18,6 @@ class T_input_data_model extends CI_Model {
 		$this->db->select($this->select);
 		$this->db->from($this->table);
 
-		$level = $this->authuser->filtering_data_by_level_user($this->table, $this->session->userdata('user')->user_id);
-		if ( !in_array($level, array(1) ) ) {
-			# code...
-			$format_json = json_encode(array('user_id' => $this->session->userdata('user')->user_id, 'fullname' => $this->regex->_genRegex($this->session->userdata('user')->fullname,'RGXQSL')));
-			$this->db->like($this->table.'.created_by', (string)$format_json);
-		}
-
-		if( isset($_GET['bulan']) AND $_GET['bulan'] != 0 ){
-			$this->db->where('MONTH(tanggal_kejadian)', $_GET['bulan']);
-		}
-
-		if( isset($_GET['tahun']) AND $_GET['tahun'] != 0 ){
-			$this->db->where('YEAR(tanggal_kejadian)', $_GET['tahun']);
-		}
-
-		if( isset($_GET['jenis_bencana']) AND $_GET['jenis_bencana'] != 0 ){
-			$this->db->where('jenis_bencana', $_GET['jenis_bencana']);
-		}
-
-		if( isset($_GET['status_bencana']) AND $_GET['status_bencana'] != 0 ){
-			$this->db->where('status_bencana', $_GET['status_bencana']);
-		}
-
-		if( isset($_GET['level_bencana']) AND $_GET['level_bencana'] != 0 ){
-			$this->db->where('level_bencana', $_GET['level_bencana']);
-		}
-
-		if( isset($_GET['province']) AND $_GET['province'] != 0 ){
-			$this->db->where('provinsi', $_GET['province']);
-		}
-
-		if( isset($_GET['date_by']) ){
-			if( isset($_GET['from_tgl']) AND $_GET['from_tgl'] != '' AND isset($_GET['to_tgl']) AND $_GET['to_tgl'] != ''  ){
-				$this->db->where('CAST('.$_GET['date_by'].' as DATE) BETWEEN '."'".$_GET['from_tgl']."'".' AND '."'".$_GET['to_tgl']."'".' ');
-
-				// $this->db->where(''.$_GET['date_by'].' >= '."'".$_GET['from_tgl']."'".' AND '.$_GET['date_by'].' <= '."'".$_GET['to_tgl']."'".' ');
-
-			}
-		}
-
 		
 		
 	}
@@ -66,7 +26,7 @@ class T_input_data_model extends CI_Model {
 	{
 		
 		$this->_main_query();
-		$this->db->where('status_data','sementara');
+		$this->db->where('t_ktp.reg_id', $_GET['reg_id']);
 
 		$i = 0;
 	
@@ -109,7 +69,7 @@ class T_input_data_model extends CI_Model {
 	public function count_all()
 	{
 		$this->_main_query();
-		$this->db->where('status_data','sementara');
+		$this->db->where('t_ktp.reg_id', $_GET['reg_id']);
 		return $this->db->count_all_results();
 	}
 
@@ -130,13 +90,13 @@ class T_input_data_model extends CI_Model {
 
 	public function save($data)
 	{
-		$this->db->insert('t_bencana', $data);
+		$this->db->insert('t_ktp', $data);
 		return $this->db->insert_id();
 	}
 
 	public function update($where, $data)
 	{
-		$this->db->update('t_bencana', $data, $where);
+		$this->db->update('t_ktp', $data, $where);
 		return $this->db->affected_rows();
 	}
 
@@ -144,24 +104,12 @@ class T_input_data_model extends CI_Model {
 	{
 		$get_data = $this->get_by_id($id);
 		if( $this->delete_image_default($get_data[0]) ){
-			$this->db->where_in(''.'t_bencana'.'.id', $id);
-			return $this->db->delete('t_bencana');
+			$this->db->where_in(''.'t_ktp'.'.id', $id);
+			return $this->db->delete('t_ktp');
 		}else{
 			return false;
 		}
 		
-	}
-
-	public function delete_image_default($data){
-		/*print_r($data);die;*/
-		/*if file images exist*/
-		if ( file_exists(PATH_IMG_CONTENT.$data->foto_default) ) {
-			if($data->foto_default != NULL){
-				/*delete first foto_default file*/
-	            unlink(PATH_IMG_CONTENT.$data->foto_default);
-			}
-        }
-        return true;
 	}
 
 

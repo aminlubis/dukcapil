@@ -271,7 +271,7 @@ jQuery(function($) {
 
       <!-- div.dataTables_borderWrap -->
       <div style="margin-top:-27px">
-        <table id="dynamic-table" base-url="pencarian/T_pencatatan" url-detail="pencarian/T_pencatatan/show_detail" class="table table-striped table-bordered table-hover">
+        <table id="dynamic-table" base-url="pelaporan/T_daftar_cetak" url-detail="pelaporan/T_daftar_cetak/show_detail" class="table table-striped table-bordered table-hover">
         <thead>
             <tr>  
               <th width="30px" class="center"></th>

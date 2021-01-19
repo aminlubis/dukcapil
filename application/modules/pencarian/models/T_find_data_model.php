@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class T_find_data_model extends CI_Model {
 
 	var $table = 't_registrasi';
-	var $column = array('t_registrasi.no_reg');
-	var $select = 't_registrasi.*';
+	var $column = array('t_registrasi.no_reg', 't_registrasi.no_akta');
+	var $select = 'no_akta, no_reg, status_data, tbl_ktp.*';
 
 	var $order = array('t_registrasi.id' => 'DESC');
 
@@ -17,46 +17,7 @@ class T_find_data_model extends CI_Model {
 	private function _main_query(){
 		$this->db->select($this->select);
 		$this->db->from($this->table);
-
-		$level = $this->authuser->filtering_data_by_level_user($this->table, $this->session->userdata('user')->user_id);
-		if ( !in_array($level, array(1) ) ) {
-			# code...
-			$format_json = json_encode(array('user_id' => $this->session->userdata('user')->user_id, 'fullname' => $this->regex->_genRegex($this->session->userdata('user')->fullname,'RGXQSL')));
-			$this->db->like($this->table.'.created_by', (string)$format_json);
-		}
-
-		if( isset($_GET['bulan']) AND $_GET['bulan'] != 0 ){
-			$this->db->where('MONTH(tanggal_kejadian)', $_GET['bulan']);
-		}
-
-		if( isset($_GET['tahun']) AND $_GET['tahun'] != 0 ){
-			$this->db->where('YEAR(tanggal_kejadian)', $_GET['tahun']);
-		}
-
-		if( isset($_GET['jenis_bencana']) AND $_GET['jenis_bencana'] != 0 ){
-			$this->db->where('jenis_bencana', $_GET['jenis_bencana']);
-		}
-
-		if( isset($_GET['status_bencana']) AND $_GET['status_bencana'] != 0 ){
-			$this->db->where('status_bencana', $_GET['status_bencana']);
-		}
-
-		if( isset($_GET['level_bencana']) AND $_GET['level_bencana'] != 0 ){
-			$this->db->where('level_bencana', $_GET['level_bencana']);
-		}
-
-		if( isset($_GET['province']) AND $_GET['province'] != 0 ){
-			$this->db->where('provinsi', $_GET['province']);
-		}
-
-		if( isset($_GET['date_by']) ){
-			if( isset($_GET['from_tgl']) AND $_GET['from_tgl'] != '' AND isset($_GET['to_tgl']) AND $_GET['to_tgl'] != ''  ){
-				$this->db->where('CAST('.$_GET['date_by'].' as DATE) BETWEEN '."'".$_GET['from_tgl']."'".' AND '."'".$_GET['to_tgl']."'".' ');
-
-				// $this->db->where(''.$_GET['date_by'].' >= '."'".$_GET['from_tgl']."'".' AND '.$_GET['date_by'].' <= '."'".$_GET['to_tgl']."'".' ');
-
-			}
-		}
+		$this->db->join('(select * from t_ktp where flag_type='."'bayi'".') as tbl_ktp', 'tbl_ktp.reg_id=t_registrasi.id', 'left');
 
 		
 		
@@ -66,7 +27,10 @@ class T_find_data_model extends CI_Model {
 	{
 		
 		$this->_main_query();
-		$this->db->where('status_data','sementara');
+		// filter by field
+		if( isset($_GET['no_akta']) AND $_GET['no_akta'] != 0 ){
+			$this->db->where('no_akta', $_GET['no_akta']);
+		}
 
 		$i = 0;
 	
@@ -109,7 +73,6 @@ class T_find_data_model extends CI_Model {
 	public function count_all()
 	{
 		$this->_main_query();
-		$this->db->where('status_data','sementara');
 		return $this->db->count_all_results();
 	}
 

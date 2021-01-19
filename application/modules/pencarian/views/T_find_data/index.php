@@ -92,35 +92,27 @@ $('#inputKecamatan').typeahead({
       }
     });
 
+    $( ".form-control" )    
 
-    function set_data_final(id_bencana){
-      if(confirm('Are you sure?')){
-        $.ajax({
-          url : 'pelaporan/T_input_data/set_data_final',
-          type: "POST",
-          data: {ID : id_bencana},
-          dataType: "JSON",        
-          beforeSend: function() {
-            achtungShowLoader();  
-          },
-          uploadProgress: function(event, position, total, percentComplete) {
-          },
-          complete: function(xhr) {     
-            var data=xhr.responseText;
-            var jsonResponse = JSON.parse(data);
+    .keypress(function(event) {        
 
-            if(jsonResponse.status === 200){
-              $.achtung({message: jsonResponse.message, timeout:5});
-              reload_table();
-            }else{
-              $.achtung({message: jsonResponse.message, timeout:5});
-            }
-            achtungHideLoader();
-          }
-        });
-      }
-      
-    }
+        var keycode =(event.keyCode?event.keyCode:event.which);         
+
+        if(keycode ==13){          
+
+          event.preventDefault();          
+
+          if($(this).valid()){            
+
+            $('#btn_search_data').click();            
+
+          }          
+
+          return false;                 
+
+        }        
+
+  });  
   
 </script>
 
@@ -185,28 +177,28 @@ $('#inputKecamatan').typeahead({
 
 
         <div class="form-group">
-          <div class="control-label col-md-2">
-            <div class="checkbox" style="margin-top: -5px">
-              <label>
-                <input name="form-field-checkbox" type="checkbox" class="ace">
-                <span class="lbl"> No. Akta Kelahiran</span>
-              </label>
+            <div class="control-label col-md-2">
+              <div class="checkbox" style="margin-top: -5px">
+                <label>
+                  <input name="checked_no_akta" value="1" type="checkbox" class="ace">
+                  <span class="lbl"> No. Akta Kelahiran</span>
+                </label>
+              </div>
             </div>
-          </div>
-          <div class="col-md-2" style="margin-left: -15px">
-              <input type="text" value="" name="" id="" class="form-control">
-          </div>
+            <div class="col-md-2" style="margin-left: -15px">
+                <input type="text" value="" name="no_akta" id="no_akta" class="form-control">
+            </div>
 
           <div class="control-label col-md-3">
             <div class="checkbox" style="margin-top: -5px">
               <label>
-                <input name="form-field-checkbox" type="checkbox" class="ace">
+                <input name="checked_nama_kk" type="checkbox" class="ace">
                 <span class="lbl"> Nama Kepala Keluarga</span>
               </label>
             </div>
           </div>
           <div class="col-md-2" style="margin-left: -15px">
-              <input type="text" value="" name="" id="" class="form-control">
+              <input type="text" value="" name="nama_kk" id="nama_kk" class="form-control">
           </div>
           
         </div>
@@ -215,19 +207,19 @@ $('#inputKecamatan').typeahead({
           <div class="control-label col-md-2">
             <div class="checkbox" style="margin-top: -5px">
               <label>
-                <input name="form-field-checkbox" type="checkbox" class="ace">
+                <input name="checked_tgl_entri" value="1" type="checkbox" class="ace">
                 <span class="lbl"> Tanggal Entri</span>
               </label>
             </div>
           </div>
           <div class="col-md-2" style="margin-left: -15px">
               <div class="input-group">
-                <input class="form-control date-picker" name="from_tgl" id="from_tgl" type="text" data-date-format="yyyy-mm-dd" value=""/>
+                <input class="form-control date-picker" name="tgl_entri" id="tgl_entri" type="text" data-date-format="yyyy-mm-dd" value=""/>
                 <span class="input-group-addon">
                   <i class="fa fa-calendar bigger-110"></i>
                 </span>
               </div>
-          </div>
+          </div>  
 
           <div class="col-md-2" style="margin-left: -19px">
             <a href="#" id="btn_search_data" class="btn btn-xs btn-primary">
@@ -248,26 +240,28 @@ $('#inputKecamatan').typeahead({
 
       <!-- div.dataTables_borderWrap -->
       <div style="margin-top:-27px">
-        <table id="dynamic-table" base-url="pelaporan/T_input_data" url-detail="pelaporan/T_input_data/show_detail" class="table table-striped table-bordered table-hover">
+        <table id="dynamic-table" base-url="pencarian/T_find_data" url-detail="pencarian/T_find_data/show_detail" class="table table-striped table-bordered table-hover">
           <thead>
-            <tr>  
-              <th width="30px" class="center"></th>
-              <th width="40px" class="center"></th>
-              <th width="40px" class="center"></th>
-              <th width="40px"></th>
-              <th width="70px">ID</th>
-              <th>No Akta</th>
-              <th>Nama Lengkap</th>
-              <th>Tanggal Entri</th>
-              <th>Provinsi</th>
-              <th>Kab/Kota</th>
-              <th>Kecamatan</th>
-              <th>Kabupaten</th>
-              <th width="70px">&nbsp;</th>
-            </tr>
-          </thead>
-          <tbody>
-          </tbody>
+              <tr>  
+                <th width="30px" class="center"></th>
+                <th width="40px" class="center"></th>
+                <th width="40px" class="center"></th>
+                <th width="40px"></th>
+                <th width="50px">ID</th>
+                <th width="80px">No Reg</th>
+                <th width="200px">No Akta Kelahiran</th>
+                <th>NIK</th>
+                <th>Nama Bayi</th>
+                <th>Tgl Lahir</th>
+                <th>JK</th>
+                <th>Nama KK</th>
+                <th>Tanggal Entri</th>
+                <th>Status</th>
+                <th width="70px">&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
         </table>
       </div>
 

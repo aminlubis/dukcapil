@@ -72,6 +72,7 @@ class References extends MX_Controller {
 	{
         
 		$result = $this->getVillageByKeyword($_POST['keyword'],$_POST['district']);
+		// print_r($this->db->last_query());die;
 		$arrResult = [];
 		foreach ($result as $key => $value) {
 			$arrResult[] = $value->id.' : '.$value->name;
@@ -85,7 +86,7 @@ class References extends MX_Controller {
 	{
         $query = $this->db->where("name LIKE '%".$key."%' ")->where("district_id", $district)
         				  ->order_by('name', 'ASC')
-                          ->get('villages_new');
+                          ->get('villages');
 		
         return $query->result();
 	}

@@ -757,9 +757,7 @@
           if (window.focus) {
               newWindow.focus();
           }
-
-          /*custom hide after show popup*/
-          $('#modalCetakTracer').modal('hide');
+          
       }
 
       function preventDefault(e) {
@@ -958,29 +956,6 @@
         return sum;
       }
 
-      function submitUpdateTransaksi(kode_trans_pelayanan){
-
-        preventDefault();
-        achtungShowLoader();
-        $.ajax({
-            url: "pelayanan/Pl_pelayanan/updateBilling?kode="+kode_trans_pelayanan+"",
-            data: $('#form_update_billing_'+kode_trans_pelayanan+'').serialize(),            
-            dataType: "json",
-            type: "POST",
-            complete: function (xhr) {
-              var data=xhr.responseText;  
-              var jsonResponse = JSON.parse(data);  
-              if(jsonResponse.status === 200){  
-                $.achtung({message: jsonResponse.message, timeout:5});
-                reset_table();
-              }else{          
-                $.achtung({message: jsonResponse.message, timeout:5});  
-              } 
-              achtungHideLoader();
-            }
-        });
-
-      }
 
     </script>
 

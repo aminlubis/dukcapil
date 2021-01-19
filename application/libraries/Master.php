@@ -446,5 +446,54 @@ final Class Master {
 
    		return $html;
 
-   	}
+	   }
+	   
+	   public function formatNoReg($reg_id){
+			$CI =&get_instance();
+			$db = $CI->load->database('default', TRUE);
+			$query = "select (count(no_akta) + 1) as no_urut from t_registrasi where no_akta is not null and tgl_generated_no_akta = '".date('Y-m-d')."' and id != ".$reg_id."";
+			$exc_qry = $db->query($query)->row();
+			$format = '317406-REG.AL-'.date('dmY').'-000'.$exc_qry->no_urut;
+
+			return $format;
+	   }
+
+	   public function formatNoAkta($reg_id){
+		$CI =&get_instance();
+		$db = $CI->load->database('default', TRUE);
+		$query = "select (count(no_akta) + 1) as no_urut from t_registrasi where no_akta is not null and tgl_generated_no_akta = '".date('Y-m-d')."' and id != ".$reg_id."";
+		$exc_qry = $db->query($query)->row();
+		$format = '3174-AL-'.date('dmY').'-000'.$exc_qry->no_urut;
+
+		return $format;
+   }
+
+	   function convert_num_to_text_ind($nilai) {
+		$nilai = abs($nilai);
+		$huruf = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+		$temp = "";
+		if ($nilai < 12) {
+			$temp = " ". $huruf[$nilai];
+		} else if ($nilai <20) {
+			$temp = $this->convert_num_to_text_ind($nilai - 10). " belas";
+		} else if ($nilai < 100) {
+			$temp = $this->convert_num_to_text_ind($nilai/10)." puluh". $this->convert_num_to_text_ind($nilai % 10);
+		} else if ($nilai < 200) {
+			$temp = " seratus" . $this->convert_num_to_text_ind($nilai - 100);
+		} else if ($nilai < 1000) {
+			$temp = $this->convert_num_to_text_ind($nilai/100) . " ratus" . $this->convert_num_to_text_ind($nilai % 100);
+		} else if ($nilai < 2000) {
+			$temp = " seribu" . $this->convert_num_to_text_ind($nilai - 1000);
+		} else if ($nilai < 1000000) {
+			$temp = $this->convert_num_to_text_ind($nilai/1000) . " ribu" . $this->convert_num_to_text_ind($nilai % 1000);
+		} else if ($nilai < 1000000000) {
+			$temp = $this->convert_num_to_text_ind($nilai/1000000) . " juta" . $this->convert_num_to_text_ind($nilai % 1000000);
+		} else if ($nilai < 1000000000000) {
+			$temp = $this->convert_num_to_text_ind($nilai/1000000000) . " milyar" . $this->convert_num_to_text_ind(fmod($nilai,1000000000));
+		} else if ($nilai < 1000000000000000) {
+			$temp = $this->convert_num_to_text_ind($nilai/1000000000000) . " trilyun" . $this->convert_num_to_text_ind(fmod($nilai,1000000000000));
+		}     
+		return $temp;
+	}
+
 }

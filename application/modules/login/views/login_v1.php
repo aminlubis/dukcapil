@@ -3,15 +3,15 @@
   <head>
     <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
     <meta charset="utf-8" />
-    <title>Admin - I Tangguh</title>
+    <title>Dinas Kependudukan dan Catatan Sipil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="apple-touch-icon" href="<?php echo base_url()?>assets/login/pages/ico/60.png">
     <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url()?>assets/login/pages/ico/76.png">
     <link rel="apple-touch-icon" sizes="120x120" href="<?php echo base_url()?>assets/login/pages/ico/120.png">
     <link rel="apple-touch-icon" sizes="152x152" href="<?php echo base_url()?>assets/login/pages/ico/152.png">
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <meta name="RSSM - SIRS" content="yes">
-    <meta name="Rumah Sakit Setia Mitra" content="yes">
+    <meta name="DUKCAPIL" content="yes">
+    <meta name="DUKCAPIL" content="yes">
     <meta name="SIRS" content="default">
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -39,24 +39,23 @@
       <div class="bg-pic">
         <!-- START Background Pic-->
         <?php
-          $arr_cover = array('3.jpg','5.jpg'); 
+          $arr_cover = array('9.jpg'); 
               shuffle($arr_cover);
         ?>
         <img src="<?php echo base_url().'assets/login/img/cover/'.array_shift($arr_cover).''?>" data-src="<?php echo base_url().'assets/login/img/cover/'.array_shift($arr_cover).''?>" data-src-retina="<?php echo base_url().'assets/login/img/cover/'.array_shift($arr_cover).''?>" alt="" class="lazy">
         <!-- END Background Pic-->
         <!-- START Background Caption-->
-        <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
+        <!-- <div class="bg-caption pull-bottom sm-pull-bottom text-white p-l-20 m-b-20">
           <img alt="" class="m-t-5" data-src="<?php echo base_url()?>assets/login/img/logo-bnpb.png" data-src-retina="<?php echo base_url()?>assets/login/img/logo-bnpb.png" src="<?php echo base_url()?>assets/login/img/logo-bnpb.png" style="width:100%">
-        </div>
+        </div> -->
         <!-- END Background Caption-->
       </div>
       <!-- END Login Background Pic Wrapper-->
       <!-- START Login Right Container-->
       <div class="login-container bg-white">
         <div class="p-l-50 m-l-20 p-r-50 m-r-20 p-t-50 m-t-30 sm-p-l-15 sm-p-r-15 sm-p-t-40">
-          
           <h2>Dashboard Admin</h2>
-          <small style="padding-top:-30px !important; font-size: 14px">Content Management System (CMS) Administrator</small>
+          <small style="padding-top:-30px !important; font-size: 14px">Dinas Kependudukan dan Catatan Sipil</small>
           <p class="p-t-35">LOGIN FORM</p>
           <!-- START Login Form -->
           <form id="form-login" class="p-t-15" method="POST" role="form" action="<?php echo base_url().'login/process'?>" autocomplete="off">
@@ -95,8 +94,10 @@
             <div class="m-b-30 p-r-80 sm-m-t-20 sm-p-r-15 sm-p-b-20 clearfix">
               <div class="col-sm-12 no-padding m-t-12">
                 <center>
-              <img src="<?php echo PATH_IMG_DEFAULT.$profile_form->app_logo?>" width="170px"> &nbsp;&nbsp;
-              &nbsp; &nbsp;             <img src="<?php echo base_url()?>assets/login/img/logo-bnpb-2.png" alt="" width="60px"></center><br>
+              <img src="<?php echo PATH_IMG_DEFAULT.$profile_form->app_logo?>" width="250px"> &nbsp;&nbsp;
+              <br>
+              <br>
+              <!-- &nbsp; &nbsp;<img src="<?php echo base_url()?>assets/login/img/logo-bnpb-2.png" alt="" width="60px"></center><br> -->
                 <p style="text-align: justify; padding-left: 10px !important">
                   Copyright <?php echo date('Y')?> @ <?php echo COMPANY?>
                 </p>

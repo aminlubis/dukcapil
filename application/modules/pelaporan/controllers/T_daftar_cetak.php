@@ -3,14 +3,14 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class T_pencatatan extends MX_Controller {
+class T_daftar_cetak extends MX_Controller {
 
     /*function constructor*/
     function __construct() {
 
         parent::__construct();
         /*breadcrumb default*/
-        $this->breadcrumbs->push('Index', 'pencarian/T_pencatatan');
+        $this->breadcrumbs->push('Index', 'pencarian/T_daftar_cetak');
         /*session redirect login if not login*/
         if($this->session->userdata('logged')!=TRUE){
             echo 'Session Expired !'; exit;
@@ -33,22 +33,22 @@ class T_pencatatan extends MX_Controller {
             'breadcrumbs' => $this->breadcrumbs->show()
         );
         /*load view index*/
-        $this->load->view('T_pencatatan/index', $data);
+        $this->load->view('T_daftar_cetak/index', $data);
     }
 
     /*function for view data only*/
-    public function show($id)
+    public function preview_print($id)
     {
+        $this->load->library('NumbersToWords');
         /*breadcrumbs for view*/
-        $this->breadcrumbs->push('View '.strtolower($this->title).'', 'pencarian/T_pencatatan/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
+        $this->breadcrumbs->push('View '.strtolower($this->title).'', 'pencarian/T_daftar_cetak/'.strtolower(get_class($this)).'/'.__FUNCTION__.'/'.$id);
         /*define data variabel*/
         $data['value'] = $this->T_pencatatan->get_by_reg_id($id);
         $data['title'] = $this->title;
-        $data['flag'] = "read";
+        $data['reg_id'] = $id;
         $data['breadcrumbs'] = $this->breadcrumbs->show();
-        // echo '<pre>'; print_r($data);die;
         /*load form view*/
-        $this->load->view('T_pencatatan/view', $data);
+        $this->load->view('T_daftar_cetak/preview_print', $data);
     }
 
     public function show_detail( $id )
@@ -95,7 +95,7 @@ class T_pencatatan extends MX_Controller {
             $row[] = $this->logs->show_logs_record_datatable($row_list);
             $status_txt = $this->master->get_custom_data('global_parameter', 'label', array('flag' => 'status_proses', 'value' => $row_list->status_data), 'row');
             $row[] = ($row_list->status_data == 1) ? '<div class="center"><span class="label label-sm label-warning">'.$status_txt->label.'</span></div>' : '<div class="center"><span class="label label-sm label-success">'.$status_txt->label.'</span></div>';
-            $row[] = '<div class="center"><a href="#" class="btn btn-xs btn-white btn-primary" onclick="getMenu('."'pencarian/T_pencatatan/show/".$row_list->id."'".')">Tampilkan data <i class="fa fa-angle-double-down"></i> </a></div>';
+            $row[] = '<div class="center"><a href="#" class="btn btn-xs btn-inverse" onclick="getMenu('."'pelaporan/T_daftar_cetak/preview_print/".$row_list->id."'".')"> <i class="fa fa-print"></i> </a></div>';
                    
             $data[] = $row;
         }
