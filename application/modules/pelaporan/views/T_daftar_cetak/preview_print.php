@@ -13,7 +13,7 @@
     <table border="0" width="60%">
       <tr>
         <td width="250px"><u><b>Nomor Induk Kependudukan</b></u><br><i>Personal Registration Number</i></td>
-        <td colspan="3">: <b><?php echo ($value['bayi']) ? $value['bayi']->no_akta : '-' ; ?></b></td>
+        <td colspan="3">: <b><?php echo ($value['bayi']) ? $value['bayi']->nik : '-' ; ?></b></td>
       <tr>
 
       <tr>

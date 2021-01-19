@@ -506,8 +506,8 @@
                           </h1>
                         </div>
                         <div class="col-sm-12">
-                          <h4><b>Dashboard Tahun <?php echo date('Y')?></b></h4>
-                          Data yang ditampilkan dibawah ini adalah data bencana tahun <?php echo date('Y') ?> 
+                          <h4><b>Dashboard</b></h4>
+                          Data yang ditampilkan dibawah ini adalah data tahun <?php echo date('Y') ?> 
                         </div>
                       
                       <div id="content_graph"></div>
@@ -751,13 +751,13 @@
 
           var left = ((width / 2) - (w / 2)) + dualScreenLeft;
           var top = ((height / 2) - (h / 2)) + dualScreenTop;
-          var newWindow = window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
+          
+          window.open(url, title, 'scrollbars=yes, width=' + w + ', height=' + h + ', top=' + top + ', left=' + left);
 
           // Puts focus on the newWindow
-          if (window.focus) {
-              newWindow.focus();
-          }
-          
+          // if (window.focus) {
+          //     newWindow.focus();
+          // }
       }
 
       function preventDefault(e) {

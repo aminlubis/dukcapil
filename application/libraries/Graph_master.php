@@ -22,57 +22,57 @@ final Class Graph_master {
 		/*modul setting*/
 		if($params['prefix']==1){	
 
-			$fields = array('Disaster'=>'total');
-			$title = '<span style="font-size:13.5px">Grafik Data Bencana</span>';
-			$subtitle = 'Source: I-Tangguh Dashboard ';
-			$db->select('MONTH(tanggal_kejadian) AS bulan, COUNT(id_bencana) AS total');
-			$db->from('v_bencana');
-			$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
-			$db->group_by('MONTH(tanggal_kejadian)');
+			$fields = array('Penerbitan_Akta_kelahiran'=>'total');
+			$title = '<span style="font-size:13.5px">Grafik Penerbitan Akta Kelahiran</span>';
+			$subtitle = 'Source: SIAK - DUKCAPIL ';
+			$db->select('MONTH(tgl_generated_no_akta) AS bulan, COUNT(id) AS total');
+			$db->from('t_registrasi');
+			$db->where('YEAR(tgl_generated_no_akta)='.date('Y').'');
+			$db->group_by('MONTH(tgl_generated_no_akta)');
 			/*excecute query*/
 			$data = $db->get()->result_array();
 		}
 
-		if($params['prefix']==2){	
-			$fields = array('nama_jenis_bencana' => 'total');
-			$title = '<span style="font-size:13.5px">Persantase Bencana Berdasarkan Jenis Bencana </span>';
-			$subtitle = 'Source: I-Tangguh Dashboard';
-			$db->select('nama_jenis_bencana, COUNT(id_bencana) as total');
-			$db->from('v_bencana');
-			$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
-			$db->group_by('nama_jenis_bencana');
-			$db->order_by('COUNT(id_bencana)', 'DESC');
-			/*excecute query*/
-			$data = $db->get()->result_array();
-		}
+		// if($params['prefix']==2){	
+		// 	$fields = array('nama_jenis_bencana' => 'total');
+		// 	$title = '<span style="font-size:13.5px">Persantase Bencana Berdasarkan Jenis Bencana </span>';
+		// 	$subtitle = 'Source: I-Tangguh Dashboard';
+		// 	$db->select('nama_jenis_bencana, COUNT(id_bencana) as total');
+		// 	$db->from('v_bencana');
+		// 	$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
+		// 	$db->group_by('nama_jenis_bencana');
+		// 	$db->order_by('COUNT(id_bencana)', 'DESC');
+		// 	/*excecute query*/
+		// 	$data = $db->get()->result_array();
+		// }
 
-		if($params['prefix']==3){	
-			$fields = array('Jenis_Bencana' => 'nama_jenis_bencana', 'Total' => 'total');
-			$title = '<span style="font-size:13.5px">Data Bencana Berdasarkan Jenis Bencana </span>';
-			$subtitle = 'Source: I-Tangguh Dashboard';
-			$db->select('nama_jenis_bencana, COUNT(id_bencana) AS total');
-			$db->from('v_bencana');
-			$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
-			$db->group_by('nama_jenis_bencana');
-			$db->order_by('COUNT(id_bencana)', 'DESC');
-			/*excecute query*/
-			$data = $db->get()->result_array();
-		}
+		// if($params['prefix']==3){	
+		// 	$fields = array('Jenis_Bencana' => 'nama_jenis_bencana', 'Total' => 'total');
+		// 	$title = '<span style="font-size:13.5px">Data Bencana Berdasarkan Jenis Bencana </span>';
+		// 	$subtitle = 'Source: I-Tangguh Dashboard';
+		// 	$db->select('nama_jenis_bencana, COUNT(id_bencana) AS total');
+		// 	$db->from('v_bencana');
+		// 	$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
+		// 	$db->group_by('nama_jenis_bencana');
+		// 	$db->order_by('COUNT(id_bencana)', 'DESC');
+		// 	/*excecute query*/
+		// 	$data = $db->get()->result_array();
+		// }
 
-		if($params['prefix']==4){	
+		// if($params['prefix']==4){	
 
-			$title = '<span style="font-size:13.5px">Grafik Data Bencana Berdasarkan Provinsi</span>';
-			$subtitle = 'Source: I-Tangguh Dashboard ';
-			$db->select('nama_prov, COUNT(id_bencana) AS total');
-			$db->from('v_bencana');
-			$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
-			$db->group_by('nama_prov');
-			/*excecute query*/
-			$data = $db->get()->result_array();
-			foreach($data as $row){
-				$fields[$row['nama_prov']] = $row['total'];
-			}
-		}
+		// 	$title = '<span style="font-size:13.5px">Grafik Data Bencana Berdasarkan Provinsi</span>';
+		// 	$subtitle = 'Source: I-Tangguh Dashboard ';
+		// 	$db->select('nama_prov, COUNT(id_bencana) AS total');
+		// 	$db->from('v_bencana');
+		// 	$db->where('YEAR(tanggal_kejadian)='.date('Y').'');
+		// 	$db->group_by('nama_prov');
+		// 	/*excecute query*/
+		// 	$data = $db->get()->result_array();
+		// 	foreach($data as $row){
+		// 		$fields[$row['nama_prov']] = $row['total'];
+		// 	}
+		// }
 		
 
 		/*find and set type chart*/

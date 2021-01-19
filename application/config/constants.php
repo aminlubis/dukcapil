@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 /*custom constant*/
-define('COMPANY', 'Badan Nasional Penanggulangan Bencana');
+define('COMPANY', 'Dinas Kependudukan dan Pencatatan Sipil');
 define('TEMPLATE', 'Ace Admin Full Custom');
 define('PATH_IMG_CONTENT', 'uploaded/images/content/');
 define('PATH_IMG_DEFAULT', 'uploaded/images/');

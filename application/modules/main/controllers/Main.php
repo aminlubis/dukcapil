@@ -26,7 +26,7 @@ class Main extends MX_Controller {
         $this->breadcrumbs->push('Welcome', 'main/'.strtolower(get_class($this)));
          $data = array(
             'title' => 'Dashboard',
-            'subtitle' => COMPANY.' (BNPB)',
+            'subtitle' => COMPANY,
             'app' => $this->db->get_where('tmp_profile_app', array('id' => 1))->row(),
             'user' => $this->Tmp_user->get_by_id($this->session->userdata('user')->user_id),
             'profile_user' => $this->db->get_where('tmp_user_profile', array('user_id' => $this->session->userdata('user')->user_id))->row(),
